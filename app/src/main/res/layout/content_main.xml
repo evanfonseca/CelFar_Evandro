@@ -17,21 +17,29 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/graus"
-        android:hint="Graus" />
+        android:hint="Graus"
+        android:inputType="number|numberSigned" />
 
-    <RadioButton
-        android:layout_width="wrap_content"
+    <RadioGroup
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Celsius"
-        android:id="@+id/rbCelsius"
-        android:checked="true" />
+        android:id="@+id/rbgroup"
+        android:orientation="vertical">
 
-    <RadioButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Fahrenheit"
-        android:id="@+id/rbFar"
-        android:checked="false" />
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Celsius"
+            android:id="@+id/rbCelsius"
+            android:checked="false" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Fahrenheit"
+            android:id="@+id/rbFar"
+            android:checked="false" />
+    </RadioGroup>
 
     <Button
         android:layout_width="wrap_content"
