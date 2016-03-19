@@ -38,21 +38,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         rg = (RadioGroup) findViewById(R.id.rbgroup);
 
         converter = (Button) findViewById(R.id.btConverter);
+        converter.setOnClickListener(this);
 
-        if (rg.getCheckedRadioButtonId()!=-1 && !graus.getText().toString().isEmpty()){
-            //Toast.makeText(MainActivity.this, "selected: "+rg.getCheckedRadioButtonId(), Toast.LENGTH_SHORT).show();
-            converter.setOnClickListener(this);
-        }
-        else {
-                if(graus.getText().toString().isEmpty()){
-                    Toast.makeText(MainActivity.this, "Insere um valor em graus!", Toast.LENGTH_SHORT).show();
 
-                }
-
-                if(rg.getCheckedRadioButtonId()==-1){
-                    Toast.makeText(MainActivity.this, "Escolhe uma escala!", Toast.LENGTH_SHORT).show();
-                }
-        }
 
 
 
@@ -89,28 +77,50 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         res.setText("");
 
-        //Toast.makeText(MainActivity.this, rb.getText(), Toast.LENGTH_SHORT).show();
-        if(rb.getText().equals("Celsius")){
-            //Toast.makeText(MainActivity.this, "Celsius", Toast.LENGTH_SHORT).show();
+        //Se já escolheu um radioButton e o campo grau não está vazio
+        if (rg.getCheckedRadioButtonId()!=-1 && !graus.getText().toString().isEmpty()){
+            //Toast.makeText(MainActivity.this, "selected: "+rg.getCheckedRadioButtonId(), Toast.LENGTH_SHORT).show();
 
-            String StGr =graus.getText().toString();
 
-            double valor = celfar(Double.parseDouble(StGr));
+            //Toast.makeText(MainActivity.this, rb.getText(), Toast.LENGTH_SHORT).show();
+            if(rb.getText().equals("Celsius")){
+                //Toast.makeText(MainActivity.this, "Celsius", Toast.LENGTH_SHORT).show();
 
-            res.setText(valor+" F");
+                String StGr =graus.getText().toString();
+
+
+                double valor = celfar(Double.parseDouble(StGr));
+
+                res.setText(valor+" F");
+
+
+            }
+
+            if(rb.getText().equals("Fahrenheit")){
+                //Toast.makeText(MainActivity.this, "Fahrenheit", Toast.LENGTH_SHORT).show();
+
+                String StGr =graus.getText().toString();
+
+                double valor = farcel(Double.parseDouble(StGr));
+
+                res.setText(valor+" C");
+            }
 
 
         }
+        else {
+            if(graus.getText().toString().isEmpty()){
+                Toast.makeText(MainActivity.this, "Insere um valor em graus!", Toast.LENGTH_SHORT).show();
 
-        if(rb.getText().equals("Fahrenheit")){
-            //Toast.makeText(MainActivity.this, "Fahrenheit", Toast.LENGTH_SHORT).show();
+            }
 
-            String StGr =graus.getText().toString();
-
-            double valor = farcel(Double.parseDouble(StGr));
-
-            res.setText(valor+" C");
+            if(rg.getCheckedRadioButtonId()==-1){
+                Toast.makeText(MainActivity.this, "Escolhe uma escala!", Toast.LENGTH_SHORT).show();
+            }
         }
+
+
+
 
     }
 
