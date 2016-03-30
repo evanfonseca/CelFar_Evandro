@@ -131,7 +131,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public void TestPullForGitHub(){
 
-        Toast.makeText(MainActivity.this, "SLB SLB SBL SBL Glorioso SBL!", Toast.LENGTH_SHORT).show();
+        Toast.makeText(MainActivity.this, "SLB SLB SBL SBL Glorioso SBL! From LINUX MINT", Toast.LENGTH_SHORT).show();
     }
 
 
