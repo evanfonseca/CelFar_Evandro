@@ -11,14 +11,15 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="enf.android.celfar_evandro.MainActivity"
     tools:showIn="@layout/activity_main"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:weightSum="1">
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/graus"
         android:hint="Graus"
-        android:inputType="number|numberSigned" />
+        android:inputType="number|numberSigned|numberDecimal" />
 
     <RadioGroup
         android:layout_width="match_parent"
@@ -47,10 +48,12 @@
         android:text="Converter"
         android:id="@+id/btConverter" />
 
-    <EditText
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/resultado"
-        android:hint="Resultado" />
+        android:id="@+id/res"
+        android:hint="Resultado"
+        android:layout_weight="0.08"
+        android:textSize="20dp" />
 
 </LinearLayout>

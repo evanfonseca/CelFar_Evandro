@@ -6,6 +6,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -30,20 +31,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
-
         graus= (EditText) findViewById(R.id.graus);
-        res= (TextView) findViewById(R.id.resultado);
-
+        res= (TextView) findViewById(R.id.res);
         rg = (RadioGroup) findViewById(R.id.rbgroup);
 
         converter = (Button) findViewById(R.id.btConverter);
         converter.setOnClickListener(this);
-
-
-
-
-
 
     }
 
@@ -76,51 +69,51 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         RadioButton rb = (RadioButton) findViewById(selected);
 
         res.setText("");
+        Boolean isAnumber=Boolean.FALSE;
+        String text = graus.getText().toString();
+        double valor = 0;
+        try {
+                valor = Double.parseDouble(text);
+                isAnumber=Boolean.TRUE;
+                //Log.i("",num+" is a number");
+                //Toast.makeText(MainActivity.this, " is a number", Toast.LENGTH_SHORT).show();
+        } catch (NumberFormatException e) {
+                //Log.i("", text + "is not a number");
+                //Toast.makeText(MainActivity.this, "is not a number", Toast.LENGTH_SHORT).show();
+        }
 
-        //Se já escolheu um radioButton e o campo grau não está vazio
-        if (rg.getCheckedRadioButtonId()!=-1 && !graus.getText().toString().isEmpty()){
+
+        //Se já escolheu um radioButton e o campo grau contem um número
+        if (rg.getCheckedRadioButtonId()!=-1 && isAnumber){
             //Toast.makeText(MainActivity.this, "selected: "+rg.getCheckedRadioButtonId(), Toast.LENGTH_SHORT).show();
-
-
-            //Toast.makeText(MainActivity.this, rb.getText(), Toast.LENGTH_SHORT).show();
+           //Toast.makeText(MainActivity.this, rb.getText(), Toast.LENGTH_SHORT).show();
             if(rb.getText().equals("Celsius")){
                 //Toast.makeText(MainActivity.this, "Celsius", Toast.LENGTH_SHORT).show();
 
-                String StGr =graus.getText().toString();
+                double Fvalor = celfar(valor);
 
-
-                double valor = celfar(Double.parseDouble(StGr));
-
-                res.setText(valor+" F");
-
+                res.setText(Fvalor+" F");
 
             }
 
             if(rb.getText().equals("Fahrenheit")){
                 //Toast.makeText(MainActivity.this, "Fahrenheit", Toast.LENGTH_SHORT).show();
 
-                String StGr =graus.getText().toString();
+                double Cvalor = farcel(valor);
 
-                double valor = farcel(Double.parseDouble(StGr));
-
-                res.setText(valor+" C");
+                res.setText(Cvalor+" C");
             }
-
 
         }
         else {
-            if(graus.getText().toString().isEmpty()){
-                Toast.makeText(MainActivity.this, "Insere um valor em graus!", Toast.LENGTH_SHORT).show();
-
+            if(!isAnumber){
+                Toast.makeText(MainActivity.this, "Insere um valor válido para graus!", Toast.LENGTH_SHORT).show();
             }
 
             if(rg.getCheckedRadioButtonId()==-1){
                 Toast.makeText(MainActivity.this, "Escolhe uma escala!", Toast.LENGTH_SHORT).show();
             }
         }
-
-
-
 
     }
 
@@ -134,6 +127,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         double C = (F -32) / 1.8;
         return C;
+    }
+
+    public void TestPullForGitHub(){
+
+        Toast.makeText(MainActivity.this, "SLB SLB SBL SBL Glorioso SBL!", Toast.LENGTH_SHORT).show();
     }
 
 
